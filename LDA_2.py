@@ -54,7 +54,7 @@ def perplexity(ldamodel, testset, dictionary, size_dictionary, num_topics):
 
 
 list_stopWords=list(set(stopwords.words('english')))
-input_file_big = open("C:\\Users\\wenxj\\Desktop\\topic\\csv_year\\Ocean_2017.csv",'r',encoding='utf-8',errors='ignore').readlines()
+input_file_big = open("/home/jlsj/JetBrains/PycharmProjects/ocean_result/journal_year/AICHE_JOURNAL_2018.csv",'r',encoding='utf-8',errors='ignore').readlines()
 # 转大小写
 input_file = [text.lower() for text in input_file_big]
 #分词
@@ -76,7 +76,8 @@ train_set = [[word for word in text if bool(re.search(r'\d', word))==False] for 
 #         pass
 # 构建训练语料
 dictionary = Dictionary(train_set)
-dictionary.filter_extremes(no_below=40,no_above=0.1)
+dictionary.filter_extremes(no_below=5,no_above=0.1)
+print(len(dictionary))
 corpus_a = [dictionary.doc2bow(text) for text in train_set]
 tfidf = models.TfidfModel(corpus_a)
 corpus = tfidf[corpus_a]
@@ -87,32 +88,36 @@ cp_train = corpus[0:p]
 cp_test = corpus[p:]
 # lda模型训练
 # 2013 年开始50个主题
-# grid = dict()
-# for topic in range(400,600,10):
-#     # grid[topic]=[]
-#     grid[topic] = []
-#     lda = LdaModel(corpus=corpus_a, id2word=dictionary, num_topics=topic,passes=2,update_every=0,alpha='auto',iterations = 500)
-#     # test_perplexity=lda.log_perplexity(cp_test)
-#     # perplex= lda.bound(cp_test)
-#     # test_perplexity = numpy.exp2(-perplex / sum(cnt for document in cp_test for cnt in document))
-#     test_perplexity = perplexity(lda, cp_test, dictionary, len(dictionary.keys()), topic)
-#     print(topic)
-#     print(test_perplexity)
-#     grid[topic].append(test_perplexity)
-#
-# df = pd.DataFrame(grid)
-# plt.figure(figsize=(14,8), dpi=120)
-# plt.subplot(221)
-# plt.plot(df.columns.values, df.iloc[0].values, '#007A99',linewidth=2)
-# plt.xticks(df.columns.values)
-# plt.ylabel('2010_test_perplexity')
-# plt.show()
+grid = dict()
+lower_bound = 40
+upper_bound = 100
+interval = 5
+for topic in range(lower_bound,upper_bound,interval):
+    # grid[topic]=[]
+    grid[topic] = []
+    # lda = LdaModel(corpus=corpus_a, id2word=dictionary, num_topics=topic,passes=2,update_every=0,alpha='auto',iterations = 500)
+    lda = LdaModel(corpus=cp_train, id2word=dictionary, num_topics=topic,passes=2,update_every=0,alpha='auto',iterations = 500)
+    # test_perplexity=lda.log_perplexity(cp_test)
+    # perplex= lda.bound(cp_test)
+    # test_perplexity = numpy.exp2(-perplex / sum(cnt for document in cp_test for cnt in document))
+    test_perplexity = perplexity(lda, cp_test, dictionary, len(dictionary.keys()), topic)
+    print(topic)
+    print(test_perplexity)
+    grid[topic].append(test_perplexity)
 
+df = pd.DataFrame(grid)
+plt.figure(figsize=(14,8), dpi=120)
+plt.subplot(221)
+plt.plot(df.columns.values, df.iloc[0].values, '#007A99',linewidth=2)
+plt.xticks(df.columns.values)
+plt.ylabel('2010_test_perplexity')
+plt.show()
 
+num_topics = 65
 #输出
-lda = LdaModel(corpus=corpus_a, id2word=dictionary, num_topics=900,passes=2,update_every=0,alpha='auto',iterations = 500)
-with open('C:\\Users\\wenxj\\Desktop\\lda\\2017_final_900.txt', 'a', newline='',encoding='UTF-8') as f:
-    for i in range(0,900):
+lda = LdaModel(corpus=corpus_a, id2word=dictionary, num_topics=num_topics,passes=2,update_every=0,alpha='auto',iterations = 500)
+with open('/home/jlsj/JetBrains/PycharmProjects/ocean_result/lda_result/AICHE_JOURNAL_2018lda.txt', 'w', newline='',encoding='UTF-8') as f:
+    for i in range(0,num_topics):
         input_str =lda.show_topic(i, topn=30)[0][0] + ':' + str(lda.show_topic(i, topn=30)[0][1])
         for j in range(1,len(lda.show_topic(i,topn=30))):
             word = lda.show_topic(i, topn=30)[j][0] + ':' + str(lda.show_topic(i, topn=30)[j][1])

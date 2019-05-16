@@ -69,49 +69,49 @@ def get(str,HEADERS,csv_write,out,proxy_info):
 # 	next = Volumesoup.find('a',{'class':'next'})
 # 	return next
 
+def obtain_info():
+    baseurl = "https://onlinelibrary.wiley.com"
+    ua = UserAgent(verify_ssl=False)
+    ua = ua.random
+    HEADERS = {"User-Agent": ua}
+    out = open("../data/journal_total/AICHE_JOURNAL.csv", 'w', newline='')
+    csv_write = csv.writer(out, dialect='excel')
+    Article_sort = []
+    # 56 (65)
+    # 12
+    count = 0
+    proxies2 = get_ip()
+    # for i in range (65,56,-1):
+    for j in range(1, 4):
+        count = count + 1
+        firstone = 'https://onlinelibrary.wiley.com/toc/15475905/2019/65/{0}'.format(j)
+        if count % 5 == 0:
+            proxies2 = get_ip()
+        else:
+            pass
+        print(proxies2)
+        Volume_req = requests.get(firstone, headers=HEADERS, proxies=proxies2)
+        Volumesoup = BeautifulSoup(Volume_req.content, features='lxml')
+        article = Volumesoup.find_all('a', {'class', 'issue-item__title visitable'})
+        for t in range(2, len(article)):
+            Article_sort.append(article[t].get('href'))
+        time.sleep(0.5)
+
+    num = 0
+    proxies3 = get_ip()
+    for i in range(0, len(Article_sort)):
+        num = num + 1
+        print(num)
+        url_art = baseurl + Article_sort[i]
+        print(url_art)
+        if num % 5 == 0:
+            proxies3 = get_ip()
+        else:
+            pass
+        get(url_art, HEADERS, csv_write, out, proxies3)
+        time.sleep(0.5)
+    print('over')
+    out.close()
 
 if __name__ == '__main__':
-
-	baseurl="https://onlinelibrary.wiley.com"
-	ua = UserAgent()
-	ua = ua.random
-	HEADERS = {"User-Agent":ua}
-	out=open("/home/cbq/Desktop/scapiy/AICHE_JOURNAL.csv",'a',newline='')
-	csv_write=csv.writer(out,dialect='excel')
-	Article_sort = []
-	#56 (65)
-	#12
-	count = 0
-	proxies2 = get_ip()
-	# for i in range (65,56,-1):
-	for j in range(1,4):
-		count = count+1
-		firstone = 'https://onlinelibrary.wiley.com/toc/15475905/2019/65/{0}'.format(j)
-		if count % 5 == 0:
-			proxies2 = get_ip()
-		else:
-			pass
-		print(proxies2)
-		Volume_req = requests.get(firstone,headers=HEADERS,proxies=proxies2)
-		Volumesoup = BeautifulSoup(Volume_req.content, features='lxml')
-		article = Volumesoup.find_all('a', {'class', 'issue-item__title visitable'})
-		for t in range(2,len(article)):
-			Article_sort.append(article[t].get('href'))
-		time.sleep(0.5)
-
-					
-	num= 0
-	proxies3 = get_ip()
-	for i in range(0,len(Article_sort)):
-		num= num+1
-		print(num)
-		url_art = baseurl+Article_sort[i]
-		print(url_art)
-		if num % 5 == 0:
-			proxies3 = get_ip()
-		else:
-			pass
-		get(url_art,HEADERS,csv_write,out,proxies3)
-		time.sleep(0.5)
-	print('over')
-	out.close()
+	obtain_info()

@@ -7,7 +7,6 @@ from sklearn import metrics
 from sklearn import decomposition
 import matplotlib.pyplot as plt
 from itertools import cycle
-from AP import takeSecond
 
 
 def AP(word_all, word_lda_all):
@@ -59,7 +58,7 @@ def AP(word_all, word_lda_all):
 
 
 if __name__ == '__main__':
-    input_file = pd.read_csv('C:\\Users\\wenxj\\Desktop\\lda\\2013\\2013_final_790.txt',sep='\t')
+    input_file = pd.read_csv('/home/jlsj/JetBrains/PycharmProjects/ocean_result/lda_result/AICHE_JOURNAL_2018lda.txt',sep='\t')
     data = input_file.values.tolist()
     # print(len(data))
     wordlist=[]
@@ -78,15 +77,16 @@ if __name__ == '__main__':
         word_all.append(word)
         word_lda_all.append(word_lda)
     print(word_all[28])
-    # result = AP(word_all, word_lda_all)
+    print("word_lda_all len:", len(word_lda_all))
+    result = AP(word_all, word_lda_all)
 
-    # with open('C:\\Users\\wenxj\\Desktop\\lda\\2010\\2010_center_test.csv', 'a', newline='', encoding='UTF-8') as f:
-    #     for item in result:
-    #         topic = item[0]
-    #         ida_r = item[1]
-    #         for j in  range(0,len(topic)):
-    #             topic_csv = topic[j]+','+str(ida_r[j])
-    #             f.write(topic_csv + '\n')
+    with open('/home/jlsj/JetBrains/PycharmProjects/ocean_result/ap_result/AICHE_JOURNAL_2018ap.csv', 'w', newline='', encoding='UTF-8') as f:
+        for item in result:
+            topic = item[0]
+            ida_r = item[1]
+            for j in  range(0,len(topic)):
+                topic_csv = topic[j]+','+str(ida_r[j])
+                f.write(topic_csv + '\n')
     # 结果一
     # with open('C:\\Users\\wenxj\\Desktop\\lda\\2010\\2010_center_10.txt', 'a', newline='', encoding='UTF-8') as f:
     #     for i in result:
