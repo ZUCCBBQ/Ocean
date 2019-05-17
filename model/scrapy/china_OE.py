@@ -65,7 +65,7 @@ def obtain_info():
 	ua = ua.random
 	HEADERS = {"User-Agent": ua}
 	print(len(HEADERS))
-	out = open("../data/journal_total/China_OE.csv", 'w', newline='')
+	out = open("../../data/journal_total/China_OE.csv", 'a', newline='', encoding='UTF-8')
 	csv_write = csv.writer(out, dialect='excel')
 	Article_sort = []
 	# (33) 32 25

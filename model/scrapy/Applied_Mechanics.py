@@ -61,7 +61,7 @@ def obtain_info():
 	ua = UserAgent(use_cache_server=False)
 	ua = ua.random
 	HEADERS = {"User-Agent": ua}
-	out = open("../data/journal_total/Applied_Mechanics.csv", 'w', newline='')
+	out = open("../../data/journal_total/Applied_Mechanics.csv", 'a', newline='', encoding='UTF-8')
 	csv_write = csv.writer(out, dialect='excel')
 	Article_sort = []
 	# (89)  88 80

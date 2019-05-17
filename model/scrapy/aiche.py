@@ -106,7 +106,7 @@ def obtain_info():
     # ua = UserAgent(verify_ssl=False)
     # ua = ua.random
     HEADERS = {"User-Agent": ua}
-    out = open("../data/journal_total/AICHE_JOURNAL.csv", 'w', newline='', encoding='UTF-8')
+    out = open("D:\\PyCharm_project\\Ocean\\model\\data\\journal_year\\AICHE_JOURNAL.csv", 'a', newline='', encoding='UTF-8')
     csv_write = csv.writer(out, dialect='excel')
     Article_sort = []
     # 56 (65)
@@ -114,7 +114,7 @@ def obtain_info():
     count = 0
     proxies2 = get_ip()
     # v+1954是年份，v是卷号， i是期号
-    for v in range(65, 55, -1):
+    for v in range(65, 64, -1):
         for i in range(1, 12):
             count = count + 1
             firstone = 'https://onlinelibrary.wiley.com/toc/15475905/{0}/{1}/{2}'.format(v + 1954, v, i)
