@@ -14,4 +14,4 @@ def obtain_journal_info(joural_name):
 
 
 if __name__ == '__main__':
-    obtain_journal_info("Applied_Mechanics")
+    obtain_journal_info("AICHE_JOURNAL")
