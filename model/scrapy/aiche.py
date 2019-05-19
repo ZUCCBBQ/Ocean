@@ -6,6 +6,8 @@ from FreeProxy.proxytool import proxytool
 from fake_useragent import UserAgent
 import re
 import time
+import os
+abspath = os.path.dirname(__file__)
 
 
 def get_ip():
@@ -74,8 +76,6 @@ def get(str, HEADERS, csv_write, out, proxy_info):
 
 def obtain_info():
     baseurl = "https://onlinelibrary.wiley.com"
-
-    import random
     list = ["Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
             "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
             "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
@@ -100,13 +100,11 @@ def obtain_info():
             "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.14) Gecko/20110218 AlexaToolbar/alxf-2.0 Firefox/3.6.14",
             "Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10.5; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"]
-
     ua = random.choice(list)
-
     # ua = UserAgent(verify_ssl=False)
     # ua = ua.random
     HEADERS = {"User-Agent": ua}
-    out = open("D:\\PyCharm_project\\Ocean\\model\\data\\journal_year\\AICHE_JOURNAL.csv", 'a', newline='', encoding='UTF-8')
+    out = open(abspath + "/../data/journal_total/AICHE_JOURNAL.csv", 'w', newline='', encoding='UTF-8')
     csv_write = csv.writer(out, dialect='excel')
     Article_sort = []
     # 56 (65)
@@ -114,7 +112,7 @@ def obtain_info():
     count = 0
     proxies2 = get_ip()
     # v+1954是年份，v是卷号， i是期号
-    for v in range(65, 64, -1):
+    for v in range(64, 63, -1):
         for i in range(1, 12):
             count = count + 1
             firstone = 'https://onlinelibrary.wiley.com/toc/15475905/{0}/{1}/{2}'.format(v + 1954, v, i)
