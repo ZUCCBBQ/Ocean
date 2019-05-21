@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>MainUi</class>
+ <widget class="QMainWindow" name="MainUi">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>期刊主题分析程序</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>60</y>
+      <x>300</x>
+      <y>140</y>
       <width>211</width>
       <height>411</height>
      </rect>
@@ -110,6 +110,27 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="uiLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>60</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>期刊主题分析程序</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
