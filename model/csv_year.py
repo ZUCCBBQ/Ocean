@@ -9,7 +9,6 @@ class YearExtractor(QObject):
     # 当前文件的绝对路径
     abspath = os.path.dirname(__file__)
 
-
     # input_filename = 'aaa_final.csv' #2
     # input_filename = 'AIAA.csv' #2
     # input_filename = 'AICHE_JOURNAL.csv'  # 2

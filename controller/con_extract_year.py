@@ -26,7 +26,7 @@ class YearController():
         # 当前正在根据年份抽取信息的期刊列表,为空说明提取信息程序空闲
         self.current_journals_year = []
 
-        # 爬虫对象初始化
+        # 抽取器初始化
         self.year_extractor = YearExtractor()
 
         # 窗口初始化
@@ -98,7 +98,7 @@ class YearController():
         os.makedirs(self.output_path + '/' + journal, exist_ok=True)
         self.current_journals_year.append(journal_year)
         self.year_ui.promptLabel.setText("正在抽取如下期刊相应年份的文章信息,请稍后...\n" + "年\n".join(self.current_journals_year) + '年')
-        t = threading.Thread(target=self.year_extractor.extract_year(journal, year), name=journal_year)
+        t = threading.Thread(target=self.year_extractor.extract_year, name=journal_year, args = (journal, year,))
         t.start()
 
     def extract_over(self, journal, year, num_paper):
