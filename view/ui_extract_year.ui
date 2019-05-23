@@ -123,7 +123,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="jounralComboBox">
+   <widget class="QComboBox" name="journalComboBox">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -175,7 +175,7 @@
    <zorder>yearLabel</zorder>
    <zorder>extractButton</zorder>
    <zorder>uiLabel</zorder>
-   <zorder>jounralComboBox</zorder>
+   <zorder>journalComboBox</zorder>
    <zorder>promptLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

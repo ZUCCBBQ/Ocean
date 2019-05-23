@@ -32,7 +32,7 @@ class LdaController():
         # 提取标识，为真说明正在进行主题词的提取
         self.is_select = False
 
-        # 爬虫对象初始化
+        # 主题词提取器初始化
         self.lda_selector = LdaSelector()
 
         # 窗口初始化

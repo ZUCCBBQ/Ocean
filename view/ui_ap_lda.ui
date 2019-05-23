@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Ap</class>
+ <widget class="QMainWindow" name="Ap">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -167,7 +167,7 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="jounralComboBox">
+   <widget class="QComboBox" name="journalComboBox">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -193,7 +193,7 @@
    <zorder>yearComboBox</zorder>
    <zorder>yearLabel</zorder>
    <zorder>Journallabel</zorder>
-   <zorder>jounralComboBox</zorder>
+   <zorder>journalComboBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -53,8 +53,8 @@ class YearController():
             name = t.getName()
             if name in self.journals:
                 self.journals.remove(name)
-        self.year_ui.jounralComboBox.clear()
-        self.year_ui.jounralComboBox.addItems(self.journals)
+        self.year_ui.journalComboBox.clear()
+        self.year_ui.journalComboBox.addItems(self.journals)
 
     def show_ui(self):
         self.update_journals()
@@ -84,7 +84,7 @@ class YearController():
             return
 
         # 获取期刊下拉选择框的值，即期刊名和年份
-        journal = self.year_ui.jounralComboBox.currentText()
+        journal = self.year_ui.journalComboBox.currentText()
         year = self.year_ui.yearComboBox.currentText()
         journal_year = journal + year
         # 查看是否正在获取该期刊的信息

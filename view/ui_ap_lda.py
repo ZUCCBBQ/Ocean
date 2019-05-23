@@ -8,11 +8,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Ui_Ap(object):
+    def setupUi(self, Ap):
+        Ap.setObjectName("Ap")
+        Ap.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(Ap)
         self.centralwidget.setObjectName("centralwidget")
         self.numTopicLabel = QtWidgets.QLabel(self.centralwidget)
         self.numTopicLabel.setGeometry(QtCore.QRect(560, 160, 141, 20))
@@ -60,11 +60,11 @@ class Ui_MainWindow(object):
         self.Journallabel.setStyleSheet("font: 11pt \"黑体\";")
         self.Journallabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.Journallabel.setObjectName("Journallabel")
-        self.jounralComboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.jounralComboBox.setGeometry(QtCore.QRect(190, 160, 141, 21))
-        self.jounralComboBox.setStyleSheet("font: 11pt \"黑体\";")
-        self.jounralComboBox.setObjectName("jounralComboBox")
-        self.jounralComboBox.addItem("")
+        self.journalComboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.journalComboBox.setGeometry(QtCore.QRect(190, 160, 141, 21))
+        self.journalComboBox.setStyleSheet("font: 11pt \"黑体\";")
+        self.journalComboBox.setObjectName("journalComboBox")
+        self.journalComboBox.addItem("")
         self.borderLabel.raise_()
         self.promptLabel.raise_()
         self.numTopicLabel.raise_()
@@ -73,28 +73,28 @@ class Ui_MainWindow(object):
         self.yearComboBox.raise_()
         self.yearLabel.raise_()
         self.Journallabel.raise_()
-        self.jounralComboBox.raise_()
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.journalComboBox.raise_()
+        Ap.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(Ap)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        Ap.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(Ap)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        Ap.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(Ap)
+        QtCore.QMetaObject.connectSlotsByName(Ap)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Ap):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.numTopicLabel.setText(_translate("MainWindow", "主题词个数：48"))
-        self.apButton.setText(_translate("MainWindow", "聚类"))
-        self.uiLabel.setText(_translate("MainWindow", "主题词聚类"))
-        self.yearComboBox.setItemText(0, _translate("MainWindow", "2018"))
-        self.yearLabel.setText(_translate("MainWindow", "年份"))
-        self.promptLabel.setText(_translate("MainWindow", "<html><head/><body><p>正在抽取如下期刊相应年份的信息,请稍后...</p><p>（或请选择一个期刊和年份以抽取信息）</p></body></html>"))
-        self.Journallabel.setText(_translate("MainWindow", "期刊名称"))
-        self.jounralComboBox.setItemText(0, _translate("MainWindow", "AICHE_JOURNAL"))
+        Ap.setWindowTitle(_translate("Ap", "MainWindow"))
+        self.numTopicLabel.setText(_translate("Ap", "主题词个数：48"))
+        self.apButton.setText(_translate("Ap", "聚类"))
+        self.uiLabel.setText(_translate("Ap", "主题词聚类"))
+        self.yearComboBox.setItemText(0, _translate("Ap", "2018"))
+        self.yearLabel.setText(_translate("Ap", "年份"))
+        self.promptLabel.setText(_translate("Ap", "<html><head/><body><p>正在抽取如下期刊相应年份的信息,请稍后...</p><p>（或请选择一个期刊和年份以抽取信息）</p></body></html>"))
+        self.Journallabel.setText(_translate("Ap", "期刊名称"))
+        self.journalComboBox.setItemText(0, _translate("Ap", "AICHE_JOURNAL"))
 
