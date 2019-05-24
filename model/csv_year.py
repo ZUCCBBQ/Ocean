@@ -42,11 +42,8 @@ class YearExtractor(QObject):
             num = 0
             for i in range(0, len(input_list)):
                 count = count + 1
-
                 if year in input_list[i][2]:
                     num = num + 1
-                    print(num)
-                    print(input_list[i])
                     writer.writerow(input_list[i])
                 else:
                     pass

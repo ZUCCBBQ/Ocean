@@ -17,7 +17,7 @@
    <widget class="QLabel" name="journalLabel">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>100</x>
       <y>160</y>
       <width>71</width>
       <height>21</height>
@@ -36,9 +36,9 @@
    <widget class="QComboBox" name="journalComboBox">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>180</x>
       <y>160</y>
-      <width>141</width>
+      <width>171</width>
       <height>22</height>
      </rect>
     </property>
@@ -54,7 +54,7 @@
    <widget class="QLabel" name="yearLabel">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>400</x>
       <y>160</y>
       <width>41</width>
       <height>21</height>
@@ -76,7 +76,7 @@
    <widget class="QComboBox" name="yearComboBox">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>450</x>
       <y>160</y>
       <width>69</width>
       <height>22</height>
@@ -94,7 +94,7 @@
    <widget class="QLabel" name="numpaperLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>560</x>
       <y>160</y>
       <width>141</width>
       <height>21</height>
@@ -279,9 +279,9 @@
    <widget class="QLabel" name="promptLabel">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>120</x>
       <y>200</y>
-      <width>491</width>
+      <width>551</width>
       <height>41</height>
      </rect>
     </property>

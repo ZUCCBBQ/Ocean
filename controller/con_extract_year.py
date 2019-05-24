@@ -64,7 +64,6 @@ class YearController():
         else:
             self.year_ui.promptLabel.setText(
                 "正在抽取如下期刊相应年份的文章信息,请稍后...\n" + "年\n".join(self.current_journals_year) + '年')
-
         self.window.show()
 
     def extract_start(self):

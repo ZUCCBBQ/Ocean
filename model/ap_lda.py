@@ -11,11 +11,14 @@ import matplotlib.pyplot as plt
 from itertools import cycle
 
 
-class Cluster():
-    # 主题词聚类结束信号，第一个int参数是聚类中心的个数，第二个int参数是聚类主题词的个数
-    ap_over_msg = pyqtSignal(int, int)
+class Cluster(QObject):
+    # 主题词聚类结束信号，第一个str参数是期刊名，第二个str参数是年份，第一个int参数是聚类中心的个数，第二个int参数是聚类主题词的个数
+    ap_over_msg = pyqtSignal(str, str, int, int)
     # 当前文件的绝对路径
     abspath = os.path.dirname(__file__)
+
+    def __init__(self):
+        QObject.__init__(self)
 
     def AP(self, word_all, word_lda_all):
         onehots = word_lda_all
@@ -94,4 +97,4 @@ class Cluster():
                 for j in range(0, len(topic)):
                     topic_csv = topic[j] + ',' + str(ida_r[j])
                     f.write(topic_csv + '\n')
-        self.ap_over_msg.emit(num_center, num_ap_topic)
+        self.ap_over_msg.emit(journal, year, num_center, num_ap_topic)

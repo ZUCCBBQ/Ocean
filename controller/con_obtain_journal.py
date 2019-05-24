@@ -4,7 +4,7 @@ from psutil import cpu_count
 import threading
 import os
 
-from model.scrapy import aiche, Applied_Mechanics, china_OE
+from model.scrapy import aiche, Applied_Mechanics, china_OE, scapiy_Computional_Physics
 from view.ui_obtain_journal import Ui_Journal
 
 
@@ -15,7 +15,7 @@ class JournalController(QObject):
     output_path = abspath + '/../model/data/journal_total'
     os.makedirs(output_path, exist_ok=True)
     # 支持获取信息的期刊列表
-    journals = ["AICHE_JOURNAL", "Applied_Mechanics", "China_OE"]
+    journals = ["AICHE_JOURNAL", "Applied_Mechanics", "China_OE", "Computional_Physics"]
     # 机器支持的最大线程个数
     max_threads = cpu_count()
     # 获取信息结束信号
@@ -31,12 +31,14 @@ class JournalController(QObject):
         self.aiche_crawler = aiche.AicheCrawler()
         self.chine_oe_crawler = china_OE.ChineOECrawler()
         self.applied_mechanics_crawler = Applied_Mechanics.AppliedMechanicsCrawler()
+        self.computional_physics_crawler = scapiy_Computional_Physics.ComputionalPhysicsCrawler()
 
         # 爬虫程序入口
         self.get_func = {
             "AICHE_JOURNAL": self.aiche_crawler.obtain_info,
             "Applied_Mechanics": self.applied_mechanics_crawler.obtain_info,
-            "China_OE": self.chine_oe_crawler.obtain_info
+            "China_OE": self.chine_oe_crawler.obtain_info,
+            "Computional_Physics": self.computional_physics_crawler.obtain_info
         }
 
         # 窗口初始化
@@ -53,6 +55,7 @@ class JournalController(QObject):
         self.aiche_crawler.obtain_over_msg.connect(self.obtain_over)
         self.chine_oe_crawler.obtain_over_msg.connect(self.obtain_over)
         self.applied_mechanics_crawler.obtain_over_msg.connect(self.obtain_over)
+        self.computional_physics_crawler.obtain_over_msg.connect(self.obtain_over)
 
     def show_ui(self):
         # current_journal列表是否为空
